@@ -1,6 +1,7 @@
 services:
   db:
     image: mysql:8.0.23
+    container_name: db
     platform: linux/amd64
     environment:
       - MYSQL_ROOT_HOST=${DB_ROOT_HOST:-%}
@@ -19,8 +20,11 @@ services:
       - backend
 
   api:
-    image: node:18-bullseye
+    container_name: api
     platform: linux/amd64
+    build:
+      context: .
+      dockerfile: Docker/api/Dockerfile
     environment:
       - MYSQL_SERVER=db
       - MYSQL_USER=${DB_USER:-username}
