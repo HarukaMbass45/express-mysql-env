@@ -4,7 +4,7 @@ services:
     container_name: db
     platform: linux/amd64
     environment:
-      - MYSQL_ROOT_HOST=${DB_ROOT_HOST:-%}
+      - MYSQL_HOST=${DB_HOST:-%}
       - MYSQL_DATABASE=${DB_NAME:-express_mysql_template}
       - MYSQL_USER=${DB_USER:-username}
       - MYSQL_PASSWORD=${DB_PASS:-secret}
@@ -26,7 +26,7 @@ services:
       context: .
       dockerfile: Docker/api/Dockerfile
     environment:
-      - MYSQL_SERVER=db
+      - MYSQL_HOST={DB_HOST:-%}
       - MYSQL_USER=${DB_USER:-username}
       - MYSQL_PASSWORD=${DB_PASS:-secret}
       - MYSQL_DATABASE=${DB_NAME:-express_mysql_template}
