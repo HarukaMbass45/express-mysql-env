@@ -20,7 +20,7 @@ app.use((req: Request, res: Response, next: NextFunction) => {
 });
 
 app.listen(3000, () => {
-  console.log('Start on port 3000...');
+  console.log('API Sever is running...');
 });
 
 const users: User[] = [
