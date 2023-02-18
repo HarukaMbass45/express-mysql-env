@@ -19,9 +19,9 @@ app.use((req: Request, res: Response, next: NextFunction) => {
   next();
 });
 
-app.listen(3333, () => {
-  console.log('Start on port 3333.');
-})
+app.listen(3000, () => {
+  console.log('Start on port 3000...');
+});
 
 const users: User[] = [
   { id: 1, name: 'User1', email: 'user01@test.local', },
