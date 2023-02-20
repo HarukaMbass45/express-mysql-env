@@ -8,3 +8,6 @@
 ## how to use
 
 - docker compose up -d
+
+## how to drop
+- docker compose down -v
