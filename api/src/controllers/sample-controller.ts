@@ -2,10 +2,6 @@ import express, { Router, Request, Response } from 'express';
 import mysql from 'mysql2';
 
 const router: Router = express.Router();
-type SampleType = {
-  name: string;
-  detail: string;
-};
 
 const connection = mysql.createConnection({
   host: 'db',
