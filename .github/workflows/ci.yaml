@@ -17,7 +17,7 @@ jobs:
           node-versions: 18.x
 
       - name: Install Dependencies
-        run: npm ci
+        run: yarn
 
       - name: Run Linter
         run: yarn lint
