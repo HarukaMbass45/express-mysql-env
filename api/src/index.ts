@@ -1,6 +1,6 @@
 import express from 'express';
 import type { Request, Response, NextFunction } from 'express';
-import sampleController from './controllers/sample-controller';
+import { sampleRouter } from '@/src/infrastructure/router/sample-router';
 
 const app: express.Express = express();
 
@@ -19,7 +19,7 @@ app.get('/', (req: Request, res: Response) => {
   res.status(200).send('Hello Express!');
 });
 
-app.use('/sample', sampleController);
+app.use('/sample', sampleRouter());
 
 app.listen(3000, () => {
   console.log('API Sever is running...');
