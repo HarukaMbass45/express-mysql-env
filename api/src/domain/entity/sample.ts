@@ -1,9 +1,15 @@
+export type SampleEntityPayload = {
+  id?: number;
+  name: string;
+}
+
 export class Sample {
-  private _id?: number;
+  private readonly _id: number|null;
   private _name: string;
 
-  public constructor (_name: string) {
-    this._name = _name;
+  public constructor (payload: SampleEntityPayload) {
+    this._id = payload.id||null;
+    this._name = payload.name;
   }
 
   get name (): string {

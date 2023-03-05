@@ -1,8 +1,14 @@
-import express, { Router, Request, Response, NextFunction } from 'express';
-import { SampleRequest } from '@/src/interface/type/request';
+import { Router, Request, Response, NextFunction } from 'express';
+import { SampleRequest } from '@/src/interfaces/type/request';
+import { SampleController } from '@/src/interfaces/controllers/sample-controller';
+import { SampleRepository } from '@/src/interfaces/repositories/sample-repository';
+import { SampleUsecase } from '@/src/application/usecase/sample-usecase';
 
 export const sampleRouter = (): Router => {
   const router = Router();
+  const sampleRepository = new SampleRepository();
+  const sampleUsecase = new SampleUsecase(sampleRepository);
+  const sampleController = new SampleController(sampleUsecase);
 
   router.get('/', async (req: Request, res: Response, next: NextFunction) => {
     try {
@@ -26,7 +32,7 @@ export const sampleRouter = (): Router => {
   router.get('/:id', async (req: Request, res: Response, next: NextFunction) => {
     try {
       const id: number = +req.params.id;
-      const result = await sampleController.find(id);
+      const result = await sampleController.findOne(id);
       res.json(result);
     } catch (err) {
       next(err);
